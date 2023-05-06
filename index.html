@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM</title>
+    <link rel="stylesheet" href="crm.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <section class="modal">
+        <button class="modal__btn modal__btn_close"> 
+            <svg class="modal__close_svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="modal__svg_path" d="M2 2L22 22" stroke="#6E6893" stroke-width="3" stroke-linecap="round"/>
+                <path class="modal__svg_path" d="M2 22L22 2" stroke="#6E6893" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        </button>
+        <h1 class="modal__title">Добавить товар</h1>
+        <fieldset class="modal__fieldset">
+            <form class="modal__form" action="https://jsonplaceholder.typicode.com/posts" method="post" id="modal__form">
+                <label class="modal__label modal__label_name" for="name">Наименование</label>
+                <input class="modal__input modal__input_name" type="text" name="name" id="name" required>
+                <label class="modal__label modal__label_category" for="category">Категория</label>
+                <input class="modal__input modal__input_category" type="text" name="category" id="category" required>
+                <label class="modal__label modal__label_units" for="units">Единицы измерения</label>
+                <input class="modal__input modal__input_units" type="text" name="units" id="units" required>
+                <label class="modal__label modal__label_discount" for="discount">Дисконт</label>
+                <div class="modal__discount-container">
+                    <input class="modal__checkbox modal__input_checkbox" type="checkbox" name="discount-checkbox" value="yes">
+                    <input class="modal__input_discount" type="text" name="discount" id="discount">
+                </div>
+                <label class="modal__label modal__label_description" for="description">Описание</label>
+                <textarea class="modal__textarea modal__textarea_description" name="description" id="description" cols="30" rows="10" required></textarea>
+                <label class="modal__label modal__label_amount" for="amount">Количество</label>
+                <input class="modal__input modal__input_number modal__input_amount" type="number" name="amount" id="amount" required>
+                <label class="modal__label modal__label_price" for="price">Цена</label>
+                <input class="modal__input modal__input_number modal__input_price" type="number" name="price" id="price" required>
+            </form>
+        </fieldset>
+        <button form="modal__form" type="submit" class="modal__btn modal__btn_add">Добавить товар</button>
+    </section>
+</body>
+</html>
