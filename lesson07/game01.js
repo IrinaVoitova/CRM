@@ -1,26 +1,28 @@
-
-
-const numRandom1 = Math.trunc(Math.random() * (101 - 1) + 1);
-console.log(numRandom1);
-let answer;
-
-let number1 = (prompt('Я загадал число от 1 до 100. Как думаете, какое это число?', '')) * 1;
+'use strict';
 
 const foo = () => {
-    if (Number.isFinite(number1) != true) {
-        alert("Введите число!");
-    }
+    const numRandom1 = Math.trunc(Math.random() * (101 - 1) + 1);
+    console.log(numRandom1);
+    // let userNumber = (prompt('Я загадал число от 1 до 100. Как думаете, какое это число?', '')) * 1;
 
-    else {
-        if (numRandom1 < number1) {
-            answer = +prompt("Меньше! Введите новый вариант.")
+while (true) {
+    let userNumber = (prompt('Я загадал число от 1 до 100. Как думаете, какое это число?', '')) * 1;
+// if (userNumber === null) break;
+
+        if (Number.isFinite(userNumber) != true) {
+            alert("Введите число!");
         }
-        if (numRandom1 > number1) {
-            answer = +prompt("Больше! Введите новый вариант.")
-        }
-        if (numRandom1 === number1) {
-            answer = alert("Правильно!")
-        };
-    }
+        else{
+            if (numRandom1 < userNumber) {
+                alert("Меньше! Введите новый вариант.");
+            }
+            if (numRandom1 > userNumber) {
+                alert("Больше! Введите новый вариант.")
+            }
+            if (numRandom1 === userNumber) {
+                alert("Правильно!"); break
+            }
 }
+}}
 foo()
+
