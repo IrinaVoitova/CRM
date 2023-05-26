@@ -6,7 +6,6 @@ const foo = () => {
 
     const bot = () =>  {
         let userNumber = +prompt('Я загадал число от 1 до 100. Как думаете, какое это число?', '');
-        console.log(userNumber);
 
         if (userNumber === 0){
             return
