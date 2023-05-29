@@ -7,7 +7,9 @@ const cart = {
     counts: 0,
     
     clear() {
-        Object.keys(cart).forEach(key => delete cart[key]);
+        this.items = [];
+        this.totalPrice = 0;
+        this.counts = 0;
         return cart
     },
 
@@ -53,10 +55,6 @@ const cart = {
         return `${this.totalPrice}`
     },
 
-    // print() {
-    //     return JSON.stringify(this.items)
-    // },
-
     print() {
         const ItemsStr = JSON.stringify(this.items)
         console.log(ItemsStr)
@@ -68,6 +66,7 @@ const cart = {
 const obj1 = cart.Add("томат", "16");
 const obj2 = cart.Add("яблоко", "9", "10");
 const obj3 = cart.Add("апельсин", "20", "1");
+const obj4 = cart.Add("огурец", "50", "12");
 console.log(obj1);
 console.log(cart.items);
 cart.totalPrice = cart.calculateItemPrice();
@@ -75,6 +74,6 @@ console.log(cart.totalPrice);
 cart.counts = cart.increaseCount();
 console.log(cart.counts);
 console.log(cart.getTotalPrice());
-console.log(cart.print());
+cart.print();
 console.log(cart.clear());
 
