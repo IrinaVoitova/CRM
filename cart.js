@@ -19,10 +19,7 @@ const cart = {
         price: price,
         count: count ?? '1',
         };
-        for (let key in obj) {
-            this.items.push(obj)
-        return obj;
-        }
+        this.items.push(obj)
     },
 
     calculateItemPrice() {
@@ -50,11 +47,6 @@ const cart = {
         })
         return calculatemPrice2 + (z ?? 0)
     },
-    
-    getTotalPrice() {
-        return `${this.totalPrice}`
-    },
-
     print() {
         const ItemsStr = JSON.stringify(this.items)
         console.log(ItemsStr)
@@ -62,18 +54,22 @@ const cart = {
     },
 };
 
-
 const obj1 = cart.Add("томат", "16");
 const obj2 = cart.Add("яблоко", "9", "10");
 const obj3 = cart.Add("апельсин", "20", "1");
 const obj4 = cart.Add("огурец", "50", "12");
 console.log(obj1);
 console.log(cart.items);
-cart.totalPrice = cart.calculateItemPrice();
 console.log(cart.totalPrice);
 cart.counts = cart.increaseCount();
 console.log(cart.counts);
-console.log(cart.getTotalPrice());
+Object.defineProperty(cart, 'totalPrice', {
+    get() {
+        return cart.calculateItemPrice()
+    },
+    set() {}
+});
+cart.totalPrice = 100;
 cart.print();
 console.log(cart.clear());
 
