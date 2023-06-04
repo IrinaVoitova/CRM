@@ -5,6 +5,20 @@ const cart = {
   items: [],
   totalPrice: 0,
   counts: 0,
+  discount: 0,
+
+  set setDiscount(promocode) {
+    if (promocode === 'METHED') {
+      this.discount = 15;
+    }
+    if (promocode === 'NEWYEAR') {
+      this.discount = 21;
+    }
+  },
+
+  get getDiscount() {
+    return this.discount;
+  },
 
   clear() {
     this.items = [];
@@ -24,22 +38,25 @@ const cart = {
   },
 
   calculateItemPrice() {
-    const resultPrice = [] = this.items.map(item => item.price);
+    let resultPrice = [];
+    resultPrice = this.items.map(item => item.price);
     console.log(resultPrice);
-    const resultCount = [] = this.items.map(item => item.count);
+    let resultCount = [];
+    resultCount = this.items.map(item => item.count);
     console.log(resultCount);
     const resultSum = [];
     for (let i = 0; i < resultPrice.length; i++) {
       const a = resultPrice[i];
       const b = resultCount[i];
-      resultSum.push(a * b);
+      resultSum.push((a * b) - a * b * this.discount / 100);
     }
     const calculatemPrice = resultSum.reduce((acc, item) => acc + item);
     return calculatemPrice;
   },
 
   increaseCount(z) {
-    const resultCount2 = [] = this.items.map(item => item.count);
+    let resultCount2 = [];
+    resultCount2 = this.items.map(item => item.count);
     console.log(resultCount2);
     const calculatemPrice2 = resultCount2.reduce((acc, item) =>
       Number(acc) + Number(item));
@@ -59,7 +76,8 @@ const obj3 = cart.add('апельсин', '20', '1');
 const obj4 = cart.add('огурец', '50', '12');
 console.log(obj1, obj2, obj3, obj4);
 console.log(cart.items);
-// console.log(cart.totalPrice);
+cart.setDiscount = 'METHED';
+console.log(cart.getDiscount);
 cart.counts = cart.increaseCount();
 console.log(cart.counts);
 Object.defineProperty(cart, 'totalPrice', {
@@ -71,4 +89,3 @@ Object.defineProperty(cart, 'totalPrice', {
 cart.totalPrice = 100;
 cart.print();
 console.log(cart.clear());
-
